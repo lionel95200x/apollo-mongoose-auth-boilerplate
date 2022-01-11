@@ -1,4 +1,4 @@
-# Boilerplate Backend 
+# Boilerplate Apollo Mongoose Backend 
 - Node server
 - Apollo Graphql 
 - Types and hooks ready to use
