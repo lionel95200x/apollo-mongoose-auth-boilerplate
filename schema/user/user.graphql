@@ -1,0 +1,65 @@
+"""
+User
+"""
+  type Query {
+    user: User
+    users: [User]
+  }
+
+
+  type User {
+    _id: ID
+    score: Float
+    email: String
+    displayName: String
+    token: String
+    whereYouFindUs: String
+  }
+
+  type Mutation {
+        login(email: String!, password: String!): User
+        register(email: String!, password: String!, displayName: String!, whereYouFindUs: String): User
+  }
+
+
+fragment UserInfos on User {
+  _id
+  displayName
+  token
+  email
+  score
+}
+
+query user {
+  user {
+    ...UserInfos
+  }
+}
+
+query users {
+  users {
+    _id
+   displayName
+   email
+   score
+  }
+}
+
+mutation login($email: String!
+  $password: String!
+) {
+    login(email: $email, password: $password) {
+      ...UserInfos
+    }
+}
+
+
+mutation register(
+  $email: String!,
+  $password: String!,
+  $displayName: String!,
+) {
+    register(email: $email, password: $password, displayName: $displayName) {
+      ...UserInfos
+    }
+}
